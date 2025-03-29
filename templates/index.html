@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+</head>
+<body>
+    <h2>Email Phishing Detection</h2>
+    <form method="post">
+        <textarea name="email_text" rows="10" cols="50" placeholder="Paste email here..."></textarea><br>
+        <button type="submit">Check Email</button>
+    </form>
+
+    {% if result %}
+        <p>Result: {{ result }}</p>
+    {% endif %}
+</body>
+</html>
