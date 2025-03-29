@@ -5,4 +5,7 @@ The following libraries that are needed are in requirements.txt
 
 When downloading the repository, the model will be missing a critical file. This file can be found in announcements as models.safetensor because it is the only place where I could upload it because of its size. You will need to download it and place it in the XAI-PhishingDetection-Web\AI folder for the project to work.
 
+Along with that, I used OpenAI API to generate reasons for why the email was considered phishing and so in order to use that you will need to put in an OpenAI API key in the model.py folder at line 5 within the quotation marks
+client = openai.Client(api_key="API_KEY")
+
 To start the code, you will run app.py for it to start.
