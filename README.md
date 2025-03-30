@@ -1,4 +1,4 @@
-XAI-PhishingDetection-Web
+XAI-PhishingDetection
 This code works on Python 3.13 and Flask
 
 This code was designed as part of my Senior Project to develop an XAI to detect phishing emails. This code funcitons by having the user input an email that they recieved into a self-hosted website and then the website would use flask to execute a python script which would use a model to analyze the message to determine if its a phishing email and if so generate a response as to why it is a phishing email. The classification model was trained using RoBERTa model with training data from https://www.kaggle.com/datasets/subhajournal/phishingemails. The model itself cannot generate a response explaining why it is a phishing email in which I used ChatGPT to explain reasons the message is potentially dangerous.
