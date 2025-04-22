@@ -1,1 +1,100 @@
+/* the styles for the elements */
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	background-color: white;
+    height: 100%;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    height: 99%;
+    margin: 0 auto;
+    border: 3px solid #0D3B66;
+    background-color: #FAF0CA;
+}
 
+/* the styles for the header */
+header {
+	padding: 1.5em 0 2em 0;
+	border-bottom: 3px solid #0D3B66;
+	background: #F95738;
+    text-align: center;
+}
+header h2 {
+	font-size: 175%;
+	color: #FAF0CA;
+}
+
+/* the styles for the main content */
+main {
+    padding: 15px 0px 0px 0px;
+	clear: left;
+    height: 72%;
+}
+
+/* the styles for the body (only present in modelError.html) */
+body h3{
+	color: #D62828;
+	padding: 0px 15px 15px 15px;
+}
+body p{
+	padding: 0px 15px 15px 15px;
+	color: #0D3B66;
+}
+body a{
+	color: #F95738
+}
+
+/* the styles for the section */
+section {
+	width: 41.8%;
+    min-width: 250px;
+	float: left;
+	padding-bottom: 20px;
+    padding-left: 15%;
+}
+
+/* the styles for the aside */
+aside {
+	width: 40%;
+	float: left;
+	padding: 0 0 5px 5px;
+}
+aside h2 {
+	color: #F95738;
+	font-size: 130%;
+	padding: .6em 0 .25em 0;
+}
+
+aside p{
+	padding: 0px;
+	color: #0D3B66;
+}
+
+/* the styles for the footer */
+footer {
+	background-color: #0D3B66;
+	clear: both;
+
+}
+footer p {
+	text-align: center;
+	color: white;
+	padding: 1em 0;
+}
+footer a {
+	color: #F4D35E;
+}
+textarea{
+    resize: none;
+    width: 71.5%;
+    height: 154px;
+}
+button{
+	margin-top: 20px;
+	margin-right: 28%;
+	float: right;
+}
