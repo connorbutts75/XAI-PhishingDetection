@@ -2,7 +2,7 @@ import openai
 from transformers import RobertaForSequenceClassification, RobertaTokenizer
 import torch
 
-client = openai.Client(api_key="OPEN-AI-KEY")
+client = openai.Client(api_key="OpenAI-API-Key")
 
 #Loading in model
 model_path = "./AI" 
@@ -34,28 +34,40 @@ def classify_text(text):
     
     return {
         predicted_label,
-        str(confidence)
+        float(confidence)
     }
 
 #This will be called by app.py
 def classify_email(text):
     confidence, label = classify_text(text)
     output =''
+    response = ''
+
+    print(confidence)   #Have to print confidence or else I wont be able to modify it for display for some reason
+    #Modifying confidence for display
+    confidence = str(int(confidence*100)) + '%'
 
     #Explain decision (Could not develop text AI so used ChatGPT)
     if label == 'LABEL_1':
-        response = client.chat.completions.create(
-        model="gpt-4o",  # Use the latest model
+        #Try statement being used to ensure that allow for catch errors with OpenAI
+        try:
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",  # Changed to use a more budget friendly model and found no signifigant performance difference
 
-        #Based on R. Chataut, P. K. Gyawali and Y. Usman, "Can AI Keep You Safe? A Study of Large Language Models for Phishing Detection,"
-        #DOI: 10.1109/CCWC60891.2024.10427626
-        messages=[
-            {"role": "system", "content": "You are a CyberGPT, an expert cybersecurity assistaint AI tasked with explaining why emails have been classified as phishing."},
-            {"role": "user", "content": "Explain why this email might be phishing. Please keep it short\n" + text}
-        ]
-)   
+                #Based on R. Chataut, P. K. Gyawali and Y. Usman, "Can AI Keep You Safe? A Study of Large Language Models for Phishing Detection,"
+                #DOI: 10.1109/CCWC60891.2024.10427626
+                messages=[
+                    {"role": "system", "content": "You are a CyberGPT, an expert cybersecurity assistaint AI tasked with explaining why emails have been classified as phishing."},
+                    {"role": "user", "content": "Explain why this email might be phishing. Please keep it short and as a paragraph and not as a list\n" + text}
+                ]
+            ) 
+            response = response.choices[0].message.content
+        except:
+            response = "Error using OpenAI, please make sure a valid API key is being used, to find out how please check the README"
 
-        output = "Email is likely phishing.\nReasoning: " + response.choices[0].message.content  # Extracts the AI's response
+
+#response.choices[0].message.content  # This is the AIs response
+        output = "Phishing"
     else:
-        output = "Email is likely safe"
-    return output
+        output = "Safe"
+    return output, response, confidence
